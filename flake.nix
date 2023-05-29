@@ -11,7 +11,7 @@
       perSystem = { config, self', inputs', pkgs, system, ... }: {
         packages = {
           terraform-with-plugins = pkgs.terraform.withPlugins (ps: with ps; [
-            tfe
+            github
           ]);
 
           default = pkgs.runCommand "default" {
