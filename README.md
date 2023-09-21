@@ -39,5 +39,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_team_id"></a> [team\_id](#output\_team\_id) | The team id |
+| <a name="output_team_node_id"></a> [team\_node\_id](#output\_team\_node\_id) | The team node id |
 | <a name="output_team_slug"></a> [team\_slug](#output\_team\_slug) | The team slug |
 <!-- END_TF_DOCS -->
