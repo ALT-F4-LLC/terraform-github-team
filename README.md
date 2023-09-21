@@ -6,13 +6,13 @@ Terraform module which creates GitHub team resources.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_github"></a> [github](#requirement\_github) | 5.25.1 |
+| <a name="requirement_github"></a> [github](#requirement\_github) | 5.37.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_github"></a> [github](#provider\_github) | 5.25.1 |
+| <a name="provider_github"></a> [github](#provider\_github) | 5.37.0 |
 
 ## Modules
 
@@ -22,8 +22,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [github_team.self](https://registry.terraform.io/providers/integrations/github/5.25.1/docs/resources/team) | resource |
-| [github_team_membership.self](https://registry.terraform.io/providers/integrations/github/5.25.1/docs/resources/team_membership) | resource |
+| [github_team.self](https://registry.terraform.io/providers/integrations/github/5.37.0/docs/resources/team) | resource |
+| [github_team_membership.self](https://registry.terraform.io/providers/integrations/github/5.37.0/docs/resources/team_membership) | resource |
 
 ## Inputs
 
@@ -39,5 +39,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_team_id"></a> [team\_id](#output\_team\_id) | The team id |
+| <a name="output_team_node_id"></a> [team\_node\_id](#output\_team\_node\_id) | The team node id |
 | <a name="output_team_slug"></a> [team\_slug](#output\_team\_slug) | The team slug |
 <!-- END_TF_DOCS -->
