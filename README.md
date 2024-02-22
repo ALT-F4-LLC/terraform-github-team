@@ -6,13 +6,14 @@ Terraform module which creates GitHub team resources.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_github"></a> [github](#requirement\_github) | 5.41.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.4.0 |
+| <a name="requirement_github"></a> [github](#requirement\_github) | ~> 5 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_github"></a> [github](#provider\_github) | 5.41.0 |
+| <a name="provider_github"></a> [github](#provider\_github) | 5.45.0 |
 
 ## Modules
 
@@ -22,8 +23,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [github_team.self](https://registry.terraform.io/providers/integrations/github/5.41.0/docs/resources/team) | resource |
-| [github_team_membership.self](https://registry.terraform.io/providers/integrations/github/5.41.0/docs/resources/team_membership) | resource |
+| [github_team.self](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/team) | resource |
+| [github_team_membership.self](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/team_membership) | resource |
 
 ## Inputs
 
