@@ -13,7 +13,7 @@ Terraform module which creates GitHub team resources.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_github"></a> [github](#provider\_github) | 5.45.0 |
+| <a name="provider_github"></a> [github](#provider\_github) | ~> 5 |
 
 ## Modules
 
