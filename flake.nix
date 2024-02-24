@@ -8,14 +8,7 @@
       systems = [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ];
       perSystem = { config, self', inputs', pkgs, system, ... }:
         let
-          terraform-github = pkgs.terraform-providers.mkProvider {
-            homepage = "https://registry.terraform.io/providers/integrations/github";
-            owner = "integrations";
-            repo = "terraform-provider-github";
-            rev = "v5.41.0";
-            hash = "sha256-fWxWcHy3TWFEpkU9uDSsHbUu+dnQKfvquN63eZH+Qf0=";
-            vendorHash = null;
-          };
+          inherit (pkgs) just terraform terraform-docs;
         in
         {
           _module.args.pkgs = import nixpkgs {
@@ -24,8 +17,8 @@
           };
 
           packages = {
-            terraform-with-plugins = pkgs.terraform.withPlugins (ps: [
-              terraform-github
+            terraform-with-plugins = terraform.withPlugins (p: [
+              p.github
             ]);
 
             default = pkgs.runCommand "default"
@@ -42,7 +35,8 @@
 
           devShells = {
             default = pkgs.mkShell {
-              buildInputs = with pkgs; [
+              buildInputs = [
+                just
                 terraform
                 terraform-docs
               ];
