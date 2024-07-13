@@ -1,7 +1,5 @@
 {
-  description = "terraform-github-team";
-
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
   outputs = inputs @ {
     flake-parts,
@@ -9,25 +7,17 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux" "aarch64-darwin" "x86_64-darwin"];
+      systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin"];
+
       perSystem = {
         config,
-        self',
-        inputs',
         pkgs,
         system,
         ...
       }: let
-        inherit (pkgs) just terraform-docs;
-        terraform = pkgs.terraform.withPlugins (p: [
-          (pkgs.terraform-providers.mkProvider {
-            hash = "sha256-y8DMpNSySMbe7E+sGVQcQdEyulq4Wnp5ryYD7FQO/fc=";
-            homepage = "https://registry.terraform.io/providers/integrations/github";
-            owner = "integrations";
-            repo = "terraform-provider-github";
-            rev = "v6.0.0";
-            vendorHash = null;
-          })
+        inherit (pkgs) just mkShell terraform-docs;
+        terraform = pkgs.terraform.withPlugins (ps: [
+          ps.github
         ]);
       in {
         _module.args.pkgs = import nixpkgs {
@@ -36,10 +26,10 @@
         };
 
         devShells = {
-          default = pkgs.mkShell {
-            buildInputs = [
+          default = mkShell {
+            inputsFrom = [config.packages.default];
+            nativeBuildInputs = [
               just
-              terraform
               terraform-docs
             ];
           };
@@ -53,7 +43,6 @@
             } ''
               mkdir -p $out
               cp -R $src/*.tf $out
-
               ${terraform}/bin/terraform -chdir="$out" init
               ${terraform}/bin/terraform -chdir="$out" validate
             '';
